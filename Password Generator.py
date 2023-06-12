@@ -1,5 +1,6 @@
 import random
 import string
+import msvcrt
 
 
 def generate_password(length, use_uppercase, use_lowercase, use_numbers, use_special_chars):
@@ -24,30 +25,25 @@ def main():
     # Prompt for options
     # use_uppercase = input("Upper Case: YES / NO? ").lower() == 'y'
     use_uppercase = True
-    # print(str(use_uppercase))
-
     # use_lowercase = input("Lower Case: YES / NO? ").lower() == 'y'
     use_lowercase = True
-    # print(str(use_lowercase))
-
     # use_numbers = input("Numbers: YES / NO? ").lower() == 'y'
     use_numbers = True
-    # print(str(use_numbers))
-
     # use_special_chars = input("Special Characters: YES / NO? ").lower() == 'y'
     use_special_chars = True
-    # print(str(use_special_chars))
 
-    # Generates the password
-    password = generate_password(length, use_uppercase, use_lowercase, use_numbers, use_special_chars)
-    print("\nGenerated Password:\n" + password)
+    while True:
+        # Generates the password
+        password = generate_password(length, use_uppercase, use_lowercase, use_numbers, use_special_chars)
+        print("\nGenerated Password:\n" + password)
 
-    password = input("\nPress Enter to exit ")
-    while password != "":
-        if password != "":
-            print("You didn't press Enter. ")
+        print("\nPress Enter to regenerate password or Esc to exit.")
 
-        password = input("\nPress Enter to exit ")
+        key = ord(msvcrt.getch())
+        if key == 13:  # Enter key
+            continue
+        elif key == 27:  # Esc key
+            break
 
 
 main()
